@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: lightgray;        
+        }
+        .container{
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: azure;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0);
+        }
+        h1{
+            text-align: center;
+            color: black;
+        }
+        .Todo{
+            display: flex;
+            margin-bottom: 30px;
+        }
+        input[type="text"]{
+            flex: 1;
+            padding: 10px;
+            border: 1px solid white;
+            border-radius: 5px 0 0 5px;
+            font-size: 15px;
+
+        }
+        button{
+            padding: 10px 20px;
+            border: none;
+            background-color: #ccc;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        ul{
+        
+            list-style-type:none;
+            padding: 10px;
+    
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TODO LIST </h1>
+        <div class="Todo">
+            <input type="text" id="todoInput" placeholder="add new note">
+            <button id="addBtn"> Add</button>
+        </div>
+        <ul id="todoList"></ul>
+    </div>
+    
+    
+    <script>
+        const todoInput = document.getElementById('todoInput');
+        const addBtn = document.getElementById('addBtn');
+        const todoList = document.getElementById('todoList');
+
+        addBtn.addEventListener('click',addTodo);
+        todoInput.addEventListener('keypress',function(e){
+            if (e.key ==='Enter'){
+               addTodo();
+            }
+        });
+
+        function addTodo(){
+            const todoText = todoInput.value;
+            if(todoText !==''){
+                const li =document.createElement('li');
+                li.textContent = todoText;
+                todoList.appendChild(li) ;
+                todoInput.value='';
+
+            }
+        }
+
+    </script>
+</body>
+</html>
