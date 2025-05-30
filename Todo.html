@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list</title>
+
+    <style>
+        .done{
+            text-decoration: line-through;
+        }
+        #write{
+            box-sizing: border-box;
+            width: 450px;
+            height: 30px;
+            margin-top: 10vmin;
+            margin-left: 50vmin;
+            color: brown;
+            background-color: aquamarine;
+            border-radius: 5px;
+            font-weight: bold;
+
+        }
+        #todo-list{
+            font-weight: bold;
+            margin-left: 50vmin;
+            margin-top: 20px;
+
+        }
+        body{
+            background-image: url(images/todo.jpg);
+            height: 100vh;
+            width: 100%;
+            background-size: cover;
+        }
+        h1{
+            margin-top: 10vmin;
+            margin-left: 70vmin;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<h1> TODO LIST</h1>
+<body>
+    <div>
+        <input type="text" id="write" placeholder="Write Here Something Important..">
+        <ul id="todo-list" ></ul>
+    </div>
+
+
+    <script>
+        let write = document.getElementById("write");
+        let todoList= document.getElementById("todo-list");
+        
+        write.addEventListener("keydown",function(e){
+            if(e.key == "Enter"){
+            addTodo(this.value);
+            this.value=''
+         }
+        })
+    
+        function addTodo(val){
+            let list = document.createElement("li");
+            list.innerHTML= `${val}`;
+            todoList.appendChild(list)
+            console.log(val)
+
+            list.addEventListener("click",function(){
+                this.classList.toggle('done')
+            })
+        }
+        
+    </script>
+</body>
+</html>
